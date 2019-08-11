@@ -1,10 +1,14 @@
-package com.example.shopstore.UI.login;
+package com.example.shopstore.view;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.RadioGroup;
 
 import com.example.shopstore.Control.CommodityAdapter;
 import com.example.shopstore.R;
@@ -13,18 +17,25 @@ import com.example.shopstore.data.Commodity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainStorePage extends AppCompatActivity {
 
+public class StorePage extends AppCompatActivity {
+
+    private ViewPager mViewPager;
+    private RadioGroup mTabRadioGroup;
+    private FragmentPagerAdapter mAdapter;
+
+    private List<Fragment> mFragments;
     private List<Commodity> commodities=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_store_page);
+        setContentView(R.layout.activity_store_page);
 
         initCommodities();
 
         RecyclerView recyclerView=(RecyclerView)findViewById(R.id.review_sp);
+
         //第一个参数用于指定布局的列数，第二个参数用于指定布局的排列方向，VERTICAL表示布局纵向排列
         StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
 
@@ -32,6 +43,7 @@ public class MainStorePage extends AppCompatActivity {
         CommodityAdapter adapter=new CommodityAdapter(commodities);
         recyclerView.setAdapter(adapter);
     }
+
 
     private void initCommodities(){
         Commodity colthes_1=new Commodity("PANTS九分裤",R.drawable.clothes_1,"弹性舒适九分裤，时尚潮流，穿着贴身");
@@ -48,4 +60,5 @@ public class MainStorePage extends AppCompatActivity {
         commodities.add(life_2);
 
     }
+
 }

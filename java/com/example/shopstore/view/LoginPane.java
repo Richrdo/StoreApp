@@ -1,4 +1,4 @@
-package com.example.shopstore.UI.login;
+package com.example.shopstore.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +34,7 @@ public class LoginPane extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(LoginPane.this,MainStorePage.class);
+                Intent intent=new Intent(LoginPane.this, HomePage.class);
                 startActivity(intent);
             }
         });

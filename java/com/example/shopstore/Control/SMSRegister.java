@@ -7,8 +7,8 @@
 //import android.util.Log;
 //import android.widget.Toast;
 //
-//import com.example.shopstore.UI.login.LoginPane;
-//import com.example.shopstore.UI.login.Register;
+//import com.example.shopstore.view.LoginPane;
+//import com.example.shopstore.view.Register;
 //
 //import cn.smssdk.EventHandler;
 //import cn.smssdk.SMSSDK;

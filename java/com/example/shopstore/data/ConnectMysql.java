@@ -1,7 +1,6 @@
 package com.example.shopstore.data;
 
 import android.util.Log;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

@@ -6,11 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.UserManager;
 
-import com.example.shopstore.UI.login.LoginPane;
+import com.example.shopstore.view.LoginPane;
 
-import com.example.shopstore.UI.login.LoginPane;
 import com.example.shopstore.data.UserManage;
 
 public class MainActivity extends AppCompatActivity {

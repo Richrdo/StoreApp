@@ -1,4 +1,4 @@
-package com.example.shopstore.UI.login;
+package com.example.shopstore.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 

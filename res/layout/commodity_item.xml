@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:background="@drawable/boder"
+    android:padding="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/commodity_image_view"
-        android:layout_margin="3dp"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="220dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/clothes_1" />
 
     <TextView
         android:id="@+id/commodity_name"
-        android:padding="5dp"
+        android:layout_marginTop="3dp"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/commodity_describe"
-        android:layout_marginTop="3dp"
-        android:layout_margin="3dp"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="商品描述"
-        android:layout_gravity="left"
-        android:maxLines="4"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="商品描述"/>
 
-</GridLayout>
+</LinearLayout>

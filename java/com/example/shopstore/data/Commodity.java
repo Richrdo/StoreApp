@@ -3,7 +3,9 @@ package com.example.shopstore.data;
 import android.media.Image;
 import android.widget.ImageView;
 
-public class Commodity {
+import java.io.Serializable;
+
+public class Commodity implements Serializable {
     private int imageId;
     private String commodityName;
     private String describe;

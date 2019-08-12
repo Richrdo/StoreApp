@@ -9,40 +9,42 @@
         android:id="@+id/fragment_vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/tabs_rg"/>
+        android:layout_above="@+id/tabs_rg"
+        android:layout_marginBottom="0dp" />
 
     <RadioGroup
         android:id="@+id/tabs_rg"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
         android:background="#dcdcdc"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rbtn_store"
-            android:text="首页"
             style="@style/Custom.TabRadioButton"
             android:checked="true"
-            android:drawableTop="@drawable/store_selector"/>
+            android:drawableTop="@drawable/store_selector"
+            android:text="首页" />
 
         <RadioButton
             android:id="@+id/rbtn_message"
-            android:text="消息"
             style="@style/Custom.TabRadioButton"
-            android:drawableTop="@drawable/message_selector"/>
+            android:drawableTop="@drawable/message_selector"
+            android:text="消息" />
 
         <RadioButton
             android:id="@+id/rbtn_basket"
-            android:text="购物车"
             style="@style/Custom.TabRadioButton"
-            android:drawableTop="@drawable/basket_selector"/>
+            android:drawableTop="@drawable/basket_selector"
+            android:text="购物车" />
 
         <RadioButton
             android:id="@+id/rbtn_user"
-            android:text="我的"
             style="@style/Custom.TabRadioButton"
-            android:drawableTop="@drawable/user_selector"/>
+            android:drawableTop="@drawable/user_selector"
+            android:text="我的" />
 
     </RadioGroup>
 

@@ -15,7 +15,7 @@
         android:src="@drawable/clothes_1" />
 
     <TextView
-        android:id="@+id/commodity_name"
+        android:id="@+id/detail_describe"
         android:layout_marginTop="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -26,13 +26,13 @@ public class UserManage {
         SharedPreferences.Editor editor=sp.edit();
         editor.putString("PHONE_NUMBER",phoneNumber);
         editor.putString("PASSWORD",password);
-        editor.commit();
+        editor.apply();
     }
 
     /*
     *获取用户信息
      */
-    public UserInfo getUserInfo(Context context){
+    private UserInfo getUserInfo(Context context){
         SharedPreferences sp=context.getSharedPreferences("userInfo",Context.MODE_PRIVATE);
         UserInfo userInfo=new UserInfo();
         userInfo.setPhoneNumber(sp.getString("PHONE_NUMBER",""));

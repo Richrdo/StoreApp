@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import com.example.shopstore.view.HomePage;
 import com.example.shopstore.view.LoginPane;
 
 import com.example.shopstore.data.UserManage;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public void handleMessage(Message msg){
             switch(msg.what){
                 case GO_HOME:
-                    Intent intent=new Intent();
+                    Intent intent=new Intent(MainActivity.this, HomePage.class);
                     startActivity(intent);
                     finish();
                     break;

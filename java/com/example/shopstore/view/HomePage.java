@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -24,6 +25,10 @@ public class HomePage extends AppCompatActivity {
     private List<Fragment> mFragments;
     private FragmentPagerAdapter mAdapter;
 
+    private static StoreFragment storeFragment=new StoreFragment();
+    public static BasketFragment basketFragment=new BasketFragment();
+    public static UserFragment userFragment=new UserFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +44,10 @@ public class HomePage extends AppCompatActivity {
 
         //init fragment
         mFragments=new ArrayList<>(4);
-        mFragments.add(new StoreFragment());
+        mFragments.add(storeFragment);
         mFragments.add(new MessageFragment());
-        mFragments.add(new BasketFragment());
-        mFragments.add(new UserFragment());
+        mFragments.add(basketFragment);
+        mFragments.add(userFragment);
 
         //init view pager
         mAdapter=new MyFragmentPagerAdapter(getSupportFragmentManager(),mFragments);
@@ -76,6 +81,20 @@ public class HomePage extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        Log.e("MYTAG", "回到主线程" );
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("MYTAG", "开始唤醒适配器" );
+                basketFragment.basketCommodityAdapter.notifyDataSetChanged();
+                Log.e("MYTAG", "适配器成功唤醒" );
+            }
+        });
+    }
 
     private RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener=new RadioGroup.OnCheckedChangeListener() {
         @Override

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shopstore.R;
 import com.example.shopstore.data.Commodity;
 
+import com.example.shopstore.data.StoreData;
 import com.example.shopstore.view.CommodityDetail;
 
 import java.util.List;
@@ -78,7 +79,7 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
         Commodity commodity=mCommodities.get(position);
-        holder.commodityImage.setImageResource(commodity.getImageId());
+        holder.commodityImage.setImageBitmap(StoreData.imageMap.get(commodity.getId()));
         holder.commodityName.setText(commodity.getCommodityName());
         holder.commodityDescribe.setText(commodity.getDescribe());
     }

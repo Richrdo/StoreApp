@@ -1,14 +1,15 @@
 package com.example.shopstore.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.shopstore.data.StoreData;
 import com.example.shopstore.R;
 import com.example.shopstore.data.Commodity;
 
@@ -31,15 +32,22 @@ public class CommodityDetail extends AppCompatActivity implements View.OnClickLi
         ImageView imageView=(ImageView) findViewById(R.id.detail_image);
         TextView describe=(TextView)findViewById(R.id.detail_describe);
 
-        imageView.setImageResource(commodity.getImageId());
+        imageView.setImageBitmap(StoreData.imageMap.get(commodity.getId()));
         describe.setText(commodity.getDescribe());
+
+        add_to_basket.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            //TODO 给下方按钮设置事件
+            case R.id.btn_add_to_basket:{
+                Log.e("MYTAG", "点击了加入购物车" );
+                StoreData.commodityBasket.add(commodity);
+                Log.e("MYTAG", "商品"+commodity.getCommodityName()+"已加入购物车" );
+                this.finish();
+            }
         }
     }
 }

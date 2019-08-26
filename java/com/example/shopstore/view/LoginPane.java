@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.shopstore.R;
+import com.example.shopstore.data.UserManage;
 
 
 import org.json.JSONException;
@@ -25,21 +26,13 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 public class LoginPane extends AppCompatActivity {
     Button btn_login;
     TextView tv_register;
     EditText account;
     EditText password;
-
-    ResultSet rst;
-    Connection conn;
-    PreparedStatement pst;
 
 
     @Override
@@ -66,14 +59,6 @@ public class LoginPane extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 login();
-//                new Thread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Log.e("MYTAG", "开始尝试连接");
-//
-//                        login();
-//                    }
-//                }).start();
             }
         });
     }
@@ -131,6 +116,8 @@ public class LoginPane extends AppCompatActivity {
                                 }
                             });
                             if (code==200){
+                                UserManage userManage=new UserManage();
+                                userManage.saveUserInfo(LoginPane.this,phone,psw);
                                 Intent intent=new Intent(LoginPane.this,HomePage.class);
                                 startActivity(intent);
                             }

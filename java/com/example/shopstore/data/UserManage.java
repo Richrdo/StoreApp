@@ -7,7 +7,7 @@ import com.example.shopstore.Control.UserInfo;
 
 public class UserManage {
     private static UserManage instance;
-    private UserManage(){
+    public UserManage(){
 
     }
 

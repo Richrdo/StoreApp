@@ -18,6 +18,7 @@ import java.util.List;
 
 public class CommodityDetail extends AppCompatActivity implements View.OnClickListener {
     private Commodity commodity;
+    double price=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,16 @@ public class CommodityDetail extends AppCompatActivity implements View.OnClickLi
             case R.id.btn_add_to_basket:{
                 Log.e("MYTAG", "点击了加入购物车" );
                 StoreData.commodityBasket.add(commodity);
+
+                for (Commodity commodity:StoreData.commodityBasket){
+                    price+=commodity.getPrice();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        HomePage.basketFragment.sum_price.setText(String.valueOf(price));
+                    }
+                });
                 Log.e("MYTAG", "商品"+commodity.getCommodityName()+"已加入购物车" );
                 this.finish();
             };break;

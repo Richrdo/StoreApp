@@ -32,7 +32,7 @@ import java.util.List;
 public class BasketFragment extends Fragment {
     private ListView listView;
     private CheckBox select_all;
-    private TextView sum_price;
+    public TextView sum_price;
     private Button btn_checkout;
     private Activity mActivity;
 
@@ -101,6 +101,7 @@ public class BasketFragment extends Fragment {
         mActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                sum_price.setText("$0");
                 basketCommodityAdapter.notifyDataSetChanged();
                 Toast.makeText(mActivity,"订单已提交！",Toast.LENGTH_SHORT).show();
             }

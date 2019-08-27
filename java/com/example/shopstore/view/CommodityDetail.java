@@ -13,10 +13,11 @@ import com.example.shopstore.data.StoreData;
 import com.example.shopstore.R;
 import com.example.shopstore.data.Commodity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CommodityDetail extends AppCompatActivity implements View.OnClickListener {
     private Commodity commodity;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class CommodityDetail extends AppCompatActivity implements View.OnClickLi
         describe.setText(commodity.getDescribe());
 
         add_to_basket.setOnClickListener(this);
+        submit_order.setOnClickListener(this);
     }
 
 
@@ -47,7 +49,13 @@ public class CommodityDetail extends AppCompatActivity implements View.OnClickLi
                 StoreData.commodityBasket.add(commodity);
                 Log.e("MYTAG", "商品"+commodity.getCommodityName()+"已加入购物车" );
                 this.finish();
-            }
+            };break;
+            case R.id.btn_submit_order:{
+                List<Commodity> commodities=new ArrayList<>();
+                commodities.add(commodity);
+                HomePage.basketFragment.submit_order(commodities);
+                this.finish();
+            };break;
         }
     }
 }

@@ -2,6 +2,8 @@ package com.example.shopstore.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,12 +13,21 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.shopstore.Control.BasketCommodityAdapter;
+import com.example.shopstore.Control.Checkout;
 import com.example.shopstore.R;
+import com.example.shopstore.data.Commodity;
+import com.example.shopstore.data.OrderBean;
 import com.example.shopstore.data.StoreData;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import java.util.List;
 
 public class BasketFragment extends Fragment {
     private ListView listView;
@@ -25,12 +36,21 @@ public class BasketFragment extends Fragment {
     private Button btn_checkout;
     private Activity mActivity;
 
-    public BasketCommodityAdapter basketCommodityAdapter;
+    SharedPreferences sharedPreferences;
+
+    public static BasketCommodityAdapter basketCommodityAdapter;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         mActivity= (Activity) context;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        Log.e("MYTAG", " 开始初始化适配器,StoreData.size="+StoreData.commodityBasket.size() );
+        basketCommodityAdapter=new BasketCommodityAdapter(mActivity, StoreData.commodityBasket);
     }
 
     @Override
@@ -47,10 +67,43 @@ public class BasketFragment extends Fragment {
     }
 
     private void initBasket(){
-        Log.e("MYTAG", "开始初始化适配器" );
-        basketCommodityAdapter=new BasketCommodityAdapter(mActivity, StoreData.commodityBasket);
-        Log.e("MYTAG", "开始配置适配器" );
+        Log.e("MYTAG", "正在createView" );
         listView.setAdapter(basketCommodityAdapter);
-        Log.e("MYTAG", "basket适配器配置完成" );
+        sharedPreferences=mActivity.getSharedPreferences("userInfo",Context.MODE_PRIVATE);
+        btn_checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submit_order(StoreData.commodityBasket);
+            }
+        });
+    }
+
+    public  void submit_order(List<Commodity> commodities){
+        OrderBean orderBean=new OrderBean(Long.valueOf(sharedPreferences.getString("PHONE_NUMBER","").trim()),commodities);
+        Gson gson=new Gson();
+        String json=gson.toJson(orderBean);
+        String ori_url="http://47.106.177.200:8080/store/basket";
+        Thread submit=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("MYTAG", "开始提交json数据，json="+json );
+                Checkout.submit(ori_url,json);
+            }
+        });
+        try{
+            submit.start();
+            submit.join();
+            Thread.sleep(20);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        StoreData.commodityBasket.clear();
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                basketCommodityAdapter.notifyDataSetChanged();
+                Toast.makeText(mActivity,"订单已提交！",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

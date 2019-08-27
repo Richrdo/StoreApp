@@ -90,6 +90,8 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void run() {
                 Log.e("MYTAG", "开始唤醒适配器" );
+                Log.e("mytag", "basketFragment="+basketFragment.toString() );
+                Log.e("mytag", "basketCommodityAdapter="+basketFragment.basketCommodityAdapter.toString() );
                 basketFragment.basketCommodityAdapter.notifyDataSetChanged();
                 Log.e("MYTAG", "适配器成功唤醒" );
             }

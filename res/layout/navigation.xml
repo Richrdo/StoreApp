@@ -28,12 +28,6 @@
             android:text="首页" />
 
         <RadioButton
-            android:id="@+id/rbtn_message"
-            style="@style/Custom.TabRadioButton"
-            android:drawableTop="@drawable/message_selector"
-            android:text="消息" />
-
-        <RadioButton
             android:id="@+id/rbtn_basket"
             style="@style/Custom.TabRadioButton"
             android:drawableTop="@drawable/basket_selector"

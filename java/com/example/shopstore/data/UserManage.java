@@ -18,6 +18,7 @@ public class UserManage {
         return instance;
     }
 
+
     /*
     *保存自动登录的用户信息
      */

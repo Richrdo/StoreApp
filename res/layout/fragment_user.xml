@@ -1,12 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/layout"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="User"/>
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/th" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="小明"/>
+
+            <TextView
+                android:id="@+id/tv_user_sex"
+                android:textSize="24dp"
+                android:text="男"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_user_phone"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_below="@id/layout"
+        android:text="13766311940"
+        android:textSize="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_logoff"
+        android:layout_below="@id/tv_user_phone"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="120dp"
+        android:text="注销"
+        android:textSize="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
-</LinearLayout>
+</RelativeLayout>

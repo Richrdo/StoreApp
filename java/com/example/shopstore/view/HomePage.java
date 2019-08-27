@@ -43,9 +43,8 @@ public class HomePage extends AppCompatActivity {
         mTabRadioGroup=findViewById(R.id.tabs_rg);
 
         //init fragment
-        mFragments=new ArrayList<>(4);
+        mFragments=new ArrayList<>(3);
         mFragments.add(storeFragment);
-        mFragments.add(new MessageFragment());
         mFragments.add(basketFragment);
         mFragments.add(userFragment);
 
